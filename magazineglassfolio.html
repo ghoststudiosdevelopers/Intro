@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Parth Chopra | Magazine Flip Resume</title>
+  <link href="https://fonts.googleapis.com/css2?family=Shadows+Into+Light&family=Nanum+Pen+Script&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --glass: rgba(255, 255, 255, 0.15);
+      --border: rgba(255, 255, 255, 0.3);
+      --shadow: rgba(0, 0, 0, 0.2);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Shadows Into Light', cursive;
+      background: url('https://www.transparenttextures.com/patterns/cardboard-flat.png'), linear-gradient(135deg, #e0eafc, #cfdef3);
+      background-blend-mode: overlay;
+      background-size: cover;
+      color: #333;
+      overflow-x: hidden;
+      perspective: 1200px;
+    }
+
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.4);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      z-index: 999;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: center;
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 2rem;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #222;
+      font-weight: bold;
+      font-size: 1rem;
+      position: relative;
+    }
+
+    nav a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -3px;
+      width: 0%;
+      height: 2px;
+      background: #333;
+      transition: width 0.3s ease;
+    }
+
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    .page {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 120px 20px 60px;
+      transform-style: preserve-3d;
+      transition: transform 0.8s ease, opacity 0.5s ease;
+      opacity: 0;
+      transform: rotateY(90deg) scale(0.95);
+      pointer-events: none;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+    }
+
+    .page.active {
+      transform: rotateY(0deg) scale(1);
+      opacity: 1;
+      pointer-events: auto;
+      position: relative;
+    }
+
+    .glass-section {
+      background: var(--glass);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      box-shadow: 0 8px 32px var(--shadow);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      padding: 40px;
+      max-width: 800px;
+      margin: auto;
+      position: relative;
+    }
+
+    .glass-section::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 50px;
+      height: 50px;
+      background: radial-gradient(circle at top right, rgba(255,255,255,0.6), transparent);
+      clip-path: polygon(100% 0, 0 0, 100% 100%);
+      pointer-events: none;
+    }
+
+    h1, h2 {
+      font-family: 'Nanum Pen Script', cursive;
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+
+    p {
+      font-size: 1.2rem;
+      margin-bottom: 1.5rem;
+      text-align: center;
+    }
+
+    .projects {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: center;
+    }
+
+    .note {
+      flex: 1 1 220px;
+      padding: 1rem;
+      border-radius: 12px;
+      box-shadow: 3px 3px 12px rgba(0,0,0,0.1);
+      background: #fff;
+      transition: transform 0.2s ease;
+    }
+
+    .note:hover {
+      transform: scale(1.05);
+    }
+
+    .yellow { background: #fff9c4; }
+    .blue { background: #bbdefb; }
+    .pink { background: #f8bbd0; }
+
+    .tech-stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: center;
+    }
+
+    .tech-item {
+      padding: 0.7rem 1.2rem;
+      border-radius: 6px;
+      font-weight: bold;
+      background: #fff;
+      border: 1px dashed #666;
+      box-shadow: 2px 2px 8px rgba(0,0,0,0.05);
+    }
+
+    .contact-links {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 1.5rem;
+    }
+
+    .contact-btn {
+      padding: 0.7rem 1.5rem;
+      border-radius: 6px;
+      font-weight: bold;
+      text-decoration: none;
+      color: white;
+      font-size: 1rem;
+    }
+
+    .email { background: #007bff; }
+    .whatsapp { background: #25d366; }
+    .insta { background: #c13584; }
+
+    .signature-title {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+
+    .flip-buttons {
+      margin-top: 2rem;
+      text-align: center;
+    }
+
+    .flip-buttons button {
+      background: rgba(255, 255, 255, 0.3);
+      border: 1px solid #999;
+      padding: 0.6rem 1.2rem;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+      margin: 0 10px;
+      transition: all 0.3s ease;
+    }
+
+    .flip-buttons button:hover {
+      transform: scale(1.05);
+    }
+
+    .featured-img {
+      width: 100%;
+      max-height: 300px;
+      object-fit: cover;
+      border-radius: 10px;
+      margin-bottom: 20px;
+    }
+
+    @media (max-width: 768px) {
+      .note, .tech-item {
+        flex: 1 1 100%;
+      }
+
+      nav ul {
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      nav {
+        padding: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <ul>
+    <li><a href="#top" onclick="flipTo(0)">Home</a></li>
+    <li><a href="#about" onclick="flipTo(1)">About</a></li>
+    <li><a href="#projects" onclick="flipTo(2)">Projects</a></li>
+    <li><a href="#stack" onclick="flipTo(3)">Tech</a></li>
+    <li><a href="#contact" onclick="flipTo(4)">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- 🔖 Pages -->
+<div class="page" id="top">
+  <div class="glass-section">
+    <img src="https://images.unsplash.com/photo-1585314064904-dcaa8355f9b3" class="featured-img" alt="Featured Magazine Image">
+    <h1>📄 Parth Chopra</h1>
+    <p>Welcome to my Magazine-style resume built with glassmorphism and page flip effect.</p>
+    <div class="flip-buttons">
+      <button onclick="flipNext()">Next →</button>
+    </div>
+  </div>
+</div>
+
+<div class="page" id="about">
+  <div class="glass-section">
+    <h2>👨‍💻 About Me</h2>
+    <p>I’m Parth Chopra, a developer blending creativity with code. I love turning ideas into beautiful, interactive experiences.</p>
+    <div class="flip-buttons">
+      <button onclick="flipPrev()">← Previous</button>
+      <button onclick="flipNext()">Next →</button>
+    </div>
+  </div>
+</div>
+
+<div class="page" id="projects">
+  <div class="glass-section">
+    <h2>📌 Projects</h2>
+    <div class="projects">
+      <div class="note yellow">
+        <h3>Ghost Portfolio</h3>
+        <p>3D animated ghost site with custom cursor, toggle mode & video bg.</p>
+      </div>
+      <div class="note blue">
+        <h3>Pixel Resume</h3>
+        <p>Retro 8-bit resume with pixel fonts, arcade vibe, and fun music.</p>
+      </div>
+      <div class="note pink">
+        <h3>Studio Journal</h3>
+        <p>Devlog diary with scroll transitions and beautiful storytelling layout.</p>
+      </div>
+    </div>
+    <div class="flip-buttons">
+      <button onclick="flipPrev()">← Previous</button>
+      <button onclick="flipNext()">Next →</button>
+    </div>
+  </div>
+</div>
+
+<div class="page" id="stack">
+  <div class="glass-section">
+    <h2>🛠️ Tools & Tech</h2>
+    <div class="tech-stack">
+      <div class="tech-item">HTML</div>
+      <div class="tech-item">CSS</div>
+      <div class="tech-item">JavaScript</div>
+      <div class="tech-item">Unity</div>
+      <div class="tech-item">Figma</div>
+      <div class="tech-item">AI Tools</div>
+    </div>
+    <div class="flip-buttons">
+      <button onclick="flipPrev()">← Previous</button>
+      <button onclick="flipNext()">Next →</button>
+    </div>
+  </div>
+</div>
+
+<div class="page" id="contact">
+  <div class="glass-section">
+    <h2>📬 Contact Me</h2>
+    <p>Let’s connect and build something amazing!</p>
+    <div class="contact-links">
+      <a href="mailto:ghoststudiosdeveloper@gmail.com" class="contact-btn email">Email</a>
+      <a href="https://wa.me/9896900679" class="contact-btn whatsapp" target="_blank">WhatsApp</a>
+      <a href="https://instagram.com/ghoststudio_dev" class="contact-btn insta" target="_blank">Instagram</a>
+    </div>
+    <div class="flip-buttons">
+      <button onclick="flipPrev()">← Previous</button>
+      <button onclick="flipNext()">Next →</button>
+    </div>
+  </div>
+</div>
+
+<div class="page">
+  <div class="glass-section">
+    <h2 class="signature-title">~ Parth Chopra ✍️</h2>
+    <p>Thanks for flipping through my story!</p>
+    <div class="flip-buttons">
+      <button onclick="flipPrev()">← Previous</button>
+      <button onclick="flipTo(0)">Back to Top ↑</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  const pages = document.querySelectorAll(".page");
+  let currentIndex = 0;
+
+  function showPage(index) {
+    pages.forEach((page, i) => {
+      page.classList.remove("active");
+    });
+    pages[index].classList.add("active");
+    currentIndex = index;
+  }
+
+  function flipNext() {
+    let next = (currentIndex + 1) % pages.length;
+    showPage(next);
+  }
+
+  function flipPrev() {
+    let prev = (currentIndex - 1 + pages.length) % pages.length;
+    showPage(prev);
+  }
+
+  function flipTo(index) {
+    showPage(index);
+  }
+
+  // Touch gestures for mobile
+  let touchStartX = 0;
+  let touchEndX = 0;
+
+  document.addEventListener("touchstart", e => {
+    touchStartX = e.changedTouches[0].screenX;
+  });
+
+  document.addEventListener("touchend", e => {
+    touchEndX = e.changedTouches[0].screenX;
+    if (touchEndX < touchStartX - 50) flipNext();
+    if (touchEndX > touchStartX + 50) flipPrev();
+  });
+
+  showPage(0);
+</script>
+
+</body>
+</html>

@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Parth Chopra | Paper Book Resume</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&family=Shadows+Into+Light&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --paper: #fffdf5;
+      --ink: #2c2c2c;
+      --line: #ccc;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Shadows Into Light', cursive;
+      background: var(--paper);
+      color: var(--ink);
+      overflow-x: hidden;
+    }
+
+    nav.main-nav {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: #fdf6e3;
+      padding: 1rem;
+      text-align: center;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    }
+
+    nav.main-nav ul {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+
+    nav.main-nav a {
+      text-decoration: none;
+      color: #333;
+      font-weight: bold;
+      position: relative;
+    }
+
+    nav.main-nav a::after {
+      content: "";
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0%;
+      height: 2px;
+      background-color: #333;
+      transition: width 0.3s ease;
+    }
+
+    nav.main-nav a:hover::after {
+      width: 100%;
+    }
+
+    .book {
+      perspective: 1200px;
+      max-width: 800px;
+      margin: 2rem auto;
+      position: relative;
+    }
+
+    .page {
+      background-image: repeating-linear-gradient(to bottom, transparent, transparent 23px, var(--line) 24px);
+      background-color: var(--paper);
+      padding: 40px 30px;
+      min-height: 85vh;
+      border-radius: 8px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+      transition: transform 0.5s ease;
+      transform-origin: left;
+      display: none;
+    }
+
+    .page.active {
+      display: block;
+      animation: flip 0.5s ease;
+    }
+
+    @keyframes flip {
+      from { transform: rotateY(-3deg); opacity: 0.5; }
+      to { transform: rotateY(0); opacity: 1; }
+    }
+
+    h1, h2 {
+      font-family: 'Nanum Pen Script', cursive;
+      font-size: 2.2rem;
+      margin-bottom: 1rem;
+    }
+
+    .underline {
+      border-bottom: 2px solid var(--ink);
+      display: inline-block;
+      margin-bottom: 1.5rem;
+    }
+
+    p {
+      font-size: 1.1rem;
+      max-width: 700px;
+      margin-bottom: 2rem;
+    }
+
+    .projects, .tech-stack, .contact-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.2rem;
+    }
+
+    .note {
+      flex: 1 1 200px;
+      padding: 1rem;
+      border-radius: 8px;
+      background: #fff9c4;
+      box-shadow: 2px 2px 10px rgba(0,0,0,0.1);
+      transform: rotate(-1deg);
+    }
+
+    .note h3 {
+      text-decoration: underline;
+      margin-bottom: 0.5rem;
+    }
+
+    .tech-item {
+      padding: 0.6rem 1.2rem;
+      border-radius: 6px;
+      font-weight: bold;
+      background: #eee;
+      border: 1px dashed #333;
+    }
+
+    .contact-box {
+      background: #fef9c3;
+      padding: 2rem;
+      border: 2px dashed #bfa800;
+      text-align: center;
+      border-radius: 10px;
+    }
+
+    .contact-link {
+      text-decoration: none;
+      padding: 0.6rem 1.2rem;
+      background: #333;
+      color: white;
+      border-radius: 6px;
+    }
+
+    .signature {
+      margin-top: 3rem;
+      font-family: 'Nanum Pen Script', cursive;
+      font-size: 2rem;
+      text-align: right;
+      opacity: 0.7;
+    }
+
+    .page-controls {
+      display: flex;
+      justify-content: space-between;
+      margin: 1rem auto;
+      max-width: 800px;
+    }
+
+    .page-btn {
+      background: #333;
+      color: white;
+      border: none;
+      padding: 0.7rem 1.5rem;
+      border-radius: 6px;
+      cursor: pointer;
+      font-family: 'Shadows Into Light', cursive;
+      font-size: 1rem;
+    }
+
+    .page-btn:disabled {
+      background: #aaa;
+      cursor: default;
+    }
+  </style>
+</head>
+<body>
+
+<!-- 🔗 Navigation -->
+<nav class="main-nav">
+  <ul>
+    <li><a href="#" onclick="goToPage(0)">Home</a></li>
+    <li><a href="#" onclick="goToPage(1)">About</a></li>
+    <li><a href="#" onclick="goToPage(2)">Projects</a></li>
+    <li><a href="#" onclick="goToPage(3)">Tech</a></li>
+    <li><a href="#" onclick="goToPage(4)">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- 📖 Book Pages -->
+<div class="book">
+  <div class="page active">
+    <h1 class="underline">📄 Parth Chopra</h1>
+    <p>Welcome to my Paper Stack Resume — where design meets simplicity.</p>
+  </div>
+
+  <div class="page">
+    <h2 class="underline">👨‍💻 About Me</h2>
+    <p>I'm Parth Chopra, a passionate developer who blends creativity and logic to craft immersive digital experiences.</p>
+  </div>
+
+  <div class="page">
+    <h2 class="underline">📌 Projects</h2>
+    <div class="projects">
+      <div class="note"><h3>Ghost Portfolio</h3><p>3D animated website.</p></div>
+      <div class="note"><h3>Pixel Resume</h3><p>8-bit retro site with music.</p></div>
+      <div class="note"><h3>Studio Journal</h3><p>Devlog styled like a diary.</p></div>
+    </div>
+  </div>
+
+  <div class="page">
+    <h2 class="underline">🛠️ Tools & Tech</h2>
+    <div class="tech-stack">
+      <div class="tech-item">HTML</div>
+      <div class="tech-item">CSS</div>
+      <div class="tech-item">JavaScript</div>
+      <div class="tech-item">Unity</div>
+      <div class="tech-item">Figma</div>
+      <div class="tech-item">AI Tools</div>
+    </div>
+  </div>
+
+  <div class="page">
+    <h2 class="underline">✉️ Get in Touch</h2>
+    <div class="contact-box">
+      <p>Let's connect 👋</p>
+      <div class="contact-links">
+        <a href="mailto:ghoststudiosdeveloper@gmail.com" class="contact-link">📧 Email</a>
+        <a href="https://wa.me/9896900679" class="contact-link">💬 WhatsApp</a>
+        <a href="https://instagram.com/ghoststudio_dev" class="contact-link">📷 Instagram</a>
+      </div>
+    </div>
+    <div class="signature">~ Parth Chopra ✍️</div>
+  </div>
+</div>
+
+<!-- ⬅️➡️ Page Controls -->
+<div class="page-controls">
+  <button class="page-btn" id="prevBtn" onclick="prevPage()">← Prev</button>
+  <button class="page-btn" id="nextBtn" onclick="nextPage()">Next →</button>
+</div>
+
+<script>
+  let currentPage = 0;
+  const pages = document.querySelectorAll('.page');
+  const prevBtn = document.getElementById('prevBtn');
+  const nextBtn = document.getElementById('nextBtn');
+
+  function showPage(index) {
+    pages.forEach((p, i) => p.classList.toggle('active', i === index));
+    prevBtn.disabled = index === 0;
+    nextBtn.disabled = index === pages.length - 1;
+    currentPage = index;
+  }
+
+  function nextPage() {
+    if (currentPage < pages.length - 1) {
+      showPage(currentPage + 1);
+    }
+  }
+
+  function prevPage() {
+    if (currentPage > 0) {
+      showPage(currentPage - 1);
+    }
+  }
+
+  function goToPage(index) {
+    showPage(index);
+  }
+
+  // 👉 Swipe support
+  let touchStartX = 0;
+  document.addEventListener("touchstart", (e) => {
+    touchStartX = e.touches[0].clientX;
+  });
+
+  document.addEventListener("touchend", (e) => {
+    const touchEndX = e.changedTouches[0].clientX;
+    const diff = touchEndX - touchStartX;
+    if (diff > 50) prevPage();
+    else if (diff < -50) nextPage();
+  });
+</script>
+
+</body>
+</html>

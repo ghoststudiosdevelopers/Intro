@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Studio Journal | Parth Chopra</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&family=DM+Serif+Display&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-texture: url('https://www.transparenttextures.com/patterns/fabric-of-squares.png');
+      --accent: #2b2b2b;
+      --marker: #2b2b2b;
+      --line: #aaa;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'DM Serif Display', serif;
+      background: #fdfcf9 var(--bg-texture);
+      color: var(--accent);
+      overflow-x: hidden;
+    }
+
+    header {
+      padding: 100px 20px 60px;
+      text-align: center;
+      background: linear-gradient(rgba(255,255,255,0.85), rgba(255,255,255,0.95));
+      border-bottom: 1px dashed #ccc;
+      position: relative;
+    }
+
+    header h1 {
+      font-size: 3.5rem;
+      font-family: 'Nanum Pen Script', cursive;
+      margin-bottom: 0.5rem;
+      animation: floatIn 1.2s ease;
+    }
+
+    header p {
+      font-style: italic;
+      color: #555;
+      max-width: 600px;
+      margin: auto;
+    }
+
+    @keyframes floatIn {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* 🔧 Sticky Sidebar Nav */
+    nav {
+      position: fixed;
+      top: 100px;
+      left: 20px;
+      z-index: 999;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    nav a {
+      text-decoration: none;
+      font-size: 1rem;
+      font-weight: bold;
+      color: var(--accent);
+      background: rgba(255, 255, 255, 0.8);
+      padding: 8px 14px;
+      border-radius: 6px;
+      transition: 0.3s;
+      box-shadow: 2px 2px 10px rgba(0,0,0,0.05);
+    }
+
+    nav a:hover {
+      background: #2b2b2b;
+      color: white;
+    }
+
+    .timeline-container {
+      display: flex;
+      position: relative;
+      margin: 80px auto;
+      padding: 0 20px;
+      max-width: 1200px;
+    }
+
+    .timeline-line {
+      position: absolute;
+      top: 0;
+      left: 40px;
+      width: 4px;
+      height: 100%;
+      background: var(--line);
+      z-index: 1;
+    }
+
+    .timeline {
+      margin-left: 80px;
+      flex: 1;
+    }
+
+    .entry {
+      position: relative;
+      margin-bottom: 100px;
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 0.6s ease;
+    }
+
+    .entry.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .marker {
+      position: absolute;
+      left: -60px;
+      top: 5px;
+      width: 16px;
+      height: 16px;
+      background: var(--marker);
+      border: 3px solid white;
+      border-radius: 50%;
+      z-index: 2;
+    }
+
+    .entry-card {
+      background: rgba(255, 255, 255, 0.95);
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+      backdrop-filter: blur(8px);
+    }
+
+    .entry-card h2 {
+      font-family: 'Nanum Pen Script', cursive;
+      font-size: 2rem;
+      margin-bottom: 0.6rem;
+    }
+
+    .entry-card p {
+      font-size: 1.1rem;
+      line-height: 1.6;
+    }
+
+    /* 🔧 Mobile Optimization */
+    @media (max-width: 768px) {
+      nav {
+        position: fixed;
+        top: auto;
+        bottom: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+        flex-direction: row;
+        gap: 0.5rem;
+        background: rgba(255,255,255,0.8);
+        border-radius: 12px;
+        padding: 8px 12px;
+        box-shadow: 0 4px 14px rgba(0,0,0,0.1);
+      }
+
+      nav a {
+        font-size: 0.8rem;
+        padding: 6px 10px;
+      }
+
+      .timeline-container {
+        flex-direction: column;
+        padding-left: 20px;
+      }
+
+      .timeline-line {
+        left: 20px;
+      }
+
+      .timeline {
+        margin-left: 40px;
+      }
+
+      .marker {
+        left: -30px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- 🔗 Sticky Nav -->
+<nav>
+  <a href="#ghost">👻</a>
+  <a href="#pixel">🎮</a>
+  <a href="#paper">📓</a>
+  <a href="#magazine">📖</a>
+  <a href="#learned">✨</a>
+</nav>
+
+<!-- 🧠 Header -->
+<header>
+  <h1>📔 Studio Journal</h1>
+  <p>A devlog diary of Parth Chopra — creative code, projects & design logs.</p>
+</header>
+
+<!-- 📘 Timeline Entries -->
+<div class="timeline-container">
+  <div class="timeline-line"></div>
+  <div class="timeline">
+
+    <div class="entry" id="ghost">
+      <div class="marker"></div>
+      <div class="entry-card">
+        <h2>👻 Ghost Portfolio</h2>
+        <p>Spooky cinematic portfolio with glowing effects, a 3D ghost, Three.js, and scroll interactions. UI feels haunted in the best way.</p>
+      </div>
+    </div>
+
+    <div class="entry" id="pixel">
+      <div class="marker"></div>
+      <div class="entry-card">
+        <h2>🎮 Pixel Resume</h2>
+        <p>8-bit resume with arcade fonts, pixel UI, and nostalgic gaming effects. A fun mix of tech + retro creativity.</p>
+      </div>
+    </div>
+
+    <div class="entry" id="paper">
+      <div class="marker"></div>
+      <div class="entry-card">
+        <h2>📓 Paper Stack Resume</h2>
+        <p>Lined-paper theme with sticky notes, flip buttons, dashed borders, and handwritten fonts — like flipping through a dev notebook.</p>
+      </div>
+    </div>
+
+    <div class="entry" id="magazine">
+      <div class="marker"></div>
+      <div class="entry-card">
+        <h2>📖 Magazine Flip Resume</h2>
+        <p>Glassmorphism style with flip effects, mobile swipe support, and cutout corners — designed to feel like a real magazine spread.</p>
+      </div>
+    </div>
+
+    <div class="entry" id="learned">
+      <div class="marker"></div>
+      <div class="entry-card">
+        <h2>✨ What I’ve Learned</h2>
+        <p>🛠️ Tools: Three.js, GSAP<br>🎨 UI/UX creativity<br>📱 Responsive animation<br>📖 Storytelling with style</p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- 📜 Reveal Animation Script -->
+<script>
+  const entries = document.querySelectorAll('.entry');
+  function reveal() {
+    entries.forEach(e => {
+      const top = e.getBoundingClientRect().top;
+      if (top < window.innerHeight * 0.85) {
+        e.classList.add('visible');
+      }
+    });
+  }
+  window.addEventListener('scroll', reveal);
+  window.addEventListener('load', reveal);
+</script>
+
+</body>
+</html>
